@@ -35,6 +35,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run: bash .circleci/setup-heroku.sh
       - add_ssh_keys:
           fingerprints:
             - "e8:37:db:c5:e5:f7:7a:f9:a9:d9:4b:e5:a5:a2:0e:e3"
