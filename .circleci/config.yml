@@ -34,6 +34,11 @@ jobs:
             echo -e "Host git.heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
             git remote add heroku https://git.heroku.com/doctalk-api-prod.git
             git push heroku master
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: doctalk-api-prod
 workflows:
   version: 2
   build:
