@@ -1,0 +1,43 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1-node
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ arch }}-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: bundle install
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: v2-dependencies-{{ arch }}-{{ checksum "Gemfile.lock" }}
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "e8:37:db:c5:e5:f7:7a:f9:a9:d9:4b:e5:a5:a2:0e:e3"
+      - deploy:
+          command: |
+            echo -e "Host git.heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+            git remote add heroku https://git.heroku.com/doctalk-api-prod.git
+            git push heroku master
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test
+      - deploy:
+          retuires:
+            - test
