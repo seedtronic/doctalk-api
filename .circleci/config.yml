@@ -40,5 +40,5 @@ workflows:
     jobs:
       - test
       - deploy:
-          retuires:
+          requires:
             - test
