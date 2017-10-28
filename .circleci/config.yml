@@ -41,7 +41,6 @@ jobs:
             - "e8:37:db:c5:e5:f7:7a:f9:a9:d9:4b:e5:a5:a2:0e:e3"
       - deploy:
           command: |
-            echo -e "Host git.heroku.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
             git remote add heroku https://git.heroku.com/doctalk-api-prod.git
             git push heroku master
 workflows:
