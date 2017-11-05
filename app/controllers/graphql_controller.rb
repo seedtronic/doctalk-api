@@ -1,13 +1,12 @@
 class GraphqlController < ApplicationController
   def execute
-    variables = ensure_hash(params[:variables])
-    query = params[:query]
-    operation_name = params[:operationName]
-    context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
-    }
-    result = DoctalkApiSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = DoctalkApiSchema
+             .execute(
+               params[:query],
+               variables: ensure_hash(params[:variables]),
+               context: {},
+               operation_name: params[:operationName]
+             )
     render json: result
   end
 
@@ -17,11 +16,7 @@ class GraphqlController < ApplicationController
   def ensure_hash(ambiguous_param)
     case ambiguous_param
     when String
-      if ambiguous_param.present?
-        ensure_hash(JSON.parse(ambiguous_param))
-      else
-        {}
-      end
+      ambiguous_param.present? ? ensure_hash(JSON.parse(ambiguous_param)) : {}
     when Hash, ActionController::Parameters
       ambiguous_param
     when nil
