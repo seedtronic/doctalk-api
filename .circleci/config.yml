@@ -43,6 +43,7 @@ jobs:
           command: |
             git remote add heroku https://git.heroku.com/doctalk-api-prod.git
             git push heroku master
+            heroku run rake db:migrate db:seed
 workflows:
   version: 2
   build:
