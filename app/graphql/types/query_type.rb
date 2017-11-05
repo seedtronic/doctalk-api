@@ -3,13 +3,15 @@ Types::QueryType = GraphQL::ObjectType.define do
   description 'The root query'
 
   field :doctor, Types::DoctorType do
-    argument :id, types.ID
+    description 'Get doctor'
+    argument :id, !types.ID
     resolve ->(_obj, args, _ctx) { Doctor.find(args[:id]) }
   end
 
   connection :doctors, Types::DoctorType.connection_type do
     description 'List doctors'
-    resolve ->(_obj, _args, _ctx) { Doctor.all }
+    argument :specialtyId, types.ID, as: :specialty_id
+    resolve Resolvers::DoctorsResolver
   end
 
   connection :specialties, Types::SpecialtyType.connection_type do
