@@ -7,4 +7,5 @@ Types::DoctorType = GraphQL::ObjectType.define do
   field :lat, types.Float
   field :lng, types.Float
   field :address, types.String
+  field :imageUrl, types.String, property: :image_url
 end
