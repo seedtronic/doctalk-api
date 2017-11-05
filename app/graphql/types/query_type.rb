@@ -16,6 +16,6 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   connection :specialties, Types::SpecialtyType.connection_type do
     description 'List specialties'
-    resolve ->(_obj, _args, _ctx) { Specialty.all }
+    resolve ->(_obj, _args, _ctx) { Specialty.all.order(:title) }
   end
 end
