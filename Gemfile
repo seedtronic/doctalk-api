@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'geokit-rails'
 gem 'graphql'
 gem 'pg'
 gem 'puma', '~> 3.7'

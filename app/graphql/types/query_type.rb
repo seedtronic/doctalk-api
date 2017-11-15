@@ -11,7 +11,8 @@ Types::QueryType = GraphQL::ObjectType.define do
   connection :doctors, Types::DoctorType.connection_type do
     description 'List doctors'
     argument :specialtyId, types.ID, as: :specialty_id
-    resolve Resolvers::DoctorsResolver
+    argument :region, Inputs::RegionInput
+    resolve Resolvers::DoctorsResolver.new
   end
 
   connection :specialties, Types::SpecialtyType.connection_type do
