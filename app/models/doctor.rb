@@ -1,6 +1,6 @@
 class Doctor < ApplicationRecord
   belongs_to :specialty
-  validates :name, presence: true
+  has_one :address, as: :addressable
 
-  acts_as_mappable
+  validates :name, :address, presence: true
 end

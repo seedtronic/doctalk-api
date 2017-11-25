@@ -1,5 +1,5 @@
 Inputs::RegionInput = GraphQL::InputObjectType.define do
-  name 'Region'
+  name 'RegionInput'
   description 'A map region'
 
   input_field :latitude, !types.Float

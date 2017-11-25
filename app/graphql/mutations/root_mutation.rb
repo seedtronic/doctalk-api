@@ -7,4 +7,10 @@ Mutations::RootMutation = GraphQL::ObjectType.define do
 
     resolve Resolvers::GoogleLoginResolver.new
   end
+
+  field :createDoctor, Types::UserType do
+    argument :doctor, Inputs::DoctorInput
+
+    resolve Resolvers::GoogleLoginResolver.new
+  end
 end
