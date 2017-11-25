@@ -1,4 +1,4 @@
 DoctalkApiSchema = GraphQL::Schema.define do
-  mutation(Types::MutationType)
+  mutation(Mutations::RootMutation)
   query(Types::QueryType)
 end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'geokit-rails'
+gem 'google-id-token'
 gem 'graphql'
 gem 'pg'
 gem 'puma', '~> 3.7'
