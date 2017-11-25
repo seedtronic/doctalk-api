@@ -1,10 +1,14 @@
 class GraphqlController < ApplicationController
+  include Knock::Authenticable
+
   def execute
     result = DoctalkApiSchema
              .execute(
                params[:query],
                variables: ensure_hash(params[:variables]),
-               context: {},
+               context: {
+                 current_user: current_user
+               },
                operation_name: params[:operationName]
              )
     render json: result
