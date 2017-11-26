@@ -1,7 +1,7 @@
 module Resolvers
   class DoctorsResolver
-    def call(_ob, args, _ctx)
-      scope = Doctor.all
+    def call(_obj, args, _ctx)
+      scope = Doctor.all.includes(:address)
       scope = filter_by_specialty(scope, args)
       scope = filter_by_region(scope, args)
       scope
