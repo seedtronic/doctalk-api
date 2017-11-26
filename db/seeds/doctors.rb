@@ -18,7 +18,7 @@ doctors = [
   { name: 'Paula Castilho', lat: -22.493925, lng: -41.909443, specialty: 'Endoscopia', image_url: 'https://conteudo.imguol.com.br/c/noticias/04/2017/09/16/a-medica-milena-gottardi-tonini-frasson-foi-morta-com-tiro-na-cabeca-na-saida-de-hospital-em-vitoria-es-1505578802300_300x420.png' }
 ]
 
-doctors.each do |doctor_data|
+doctors.each_with_index do |doctor_data, index|
   doctor = Doctor.find_or_initialize_by(name: doctor_data[:name])
   doctor.address || doctor.build_address
   doctor.address.attributes = { lat: doctor_data[:lat], lng: doctor_data[:lng] }
@@ -26,7 +26,8 @@ doctors.each do |doctor_data|
   doctor.attributes = {
     name: doctor_data[:name],
     specialty: Specialty.find_by(title: doctor_data[:specialty]),
-    image_url: doctor_data[:image_url]
+    image_url: doctor_data[:image_url],
+    crm: "SP 123#{index}"
   }
   doctor.save!
   doctor.address.save!
