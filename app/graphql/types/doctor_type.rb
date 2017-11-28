@@ -7,4 +7,5 @@ Types::DoctorType = GraphQL::ObjectType.define do
   field :imageUrl, types.String, property: :image_url
   field :specialty, Types::SpecialtyType
   field :address, Types::AddressType
+  field :user, Types::UserType
 end
