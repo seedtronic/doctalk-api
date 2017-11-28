@@ -2,6 +2,12 @@ Types::QueryType = GraphQL::ObjectType.define do
   name 'Query'
   description 'The root query'
 
+  field :currentUser, Types::UserType do
+    description 'The current user'
+
+    resolve ->(_obj, _args, ctx) { ctx[:current_user] }
+  end
+
   field :doctor, Types::DoctorType do
     description 'Get doctor'
     argument :id, !types.ID
