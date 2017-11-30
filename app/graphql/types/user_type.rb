@@ -7,4 +7,5 @@ Types::UserType = GraphQL::ObjectType.define do
   field :name, !types.String
   field :email, !types.String
   field :photoUrl, !types.String, property: :photo_url
+  field :doctor, Types::DoctorType
 end

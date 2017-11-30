@@ -4,6 +4,6 @@ Inputs::DoctorInput = GraphQL::InputObjectType.define do
 
   input_field :name, !types.String
   input_field :crm, !types.String
-  input_field :specialty_id, !types.ID
+  input_field :specialtyId, !types.ID, as: :specialty_id
   input_field :address, !Inputs::AddressInput
 end
