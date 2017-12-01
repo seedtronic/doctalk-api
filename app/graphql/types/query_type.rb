@@ -25,4 +25,10 @@ Types::QueryType = GraphQL::ObjectType.define do
     description 'List specialties'
     resolve ->(_obj, _args, _ctx) { Specialty.all.order(:title) }
   end
+
+  connection :appointment_schedules,
+             Types::AppointmentScheduleType.connection_type do
+    description 'List appointment schedules'
+    resolve ->(_obj, _args, ctx) { ctx[:current_user].appointment_schedules }
+  end
 end

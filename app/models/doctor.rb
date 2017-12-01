@@ -3,6 +3,7 @@ class Doctor < ApplicationRecord
   has_one :address, as: :addressable, inverse_of: :addressable,
                     dependent: :destroy
   has_one :user
+  has_many :appointment_schedules
 
   validates :name, :crm, :address, presence: true
 

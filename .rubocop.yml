@@ -1,3 +1,7 @@
+Metrics/BlockLength:
+  Exclude:
+    - 'app/graphql/types/**/*'
+
 Metrics/LineLength:
   Exclude:
     - 'config/**/*'
