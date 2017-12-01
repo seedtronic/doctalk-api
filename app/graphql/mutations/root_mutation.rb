@@ -13,4 +13,10 @@ Mutations::RootMutation = GraphQL::ObjectType.define do
 
     resolve Resolvers::UpsertDoctorResolver.new
   end
+
+  field :createAppointmentSchedule, Types::AppointmentScheduleType do
+    argument :appointmentSchedule, Inputs::AppointmentScheduleInput,
+             as: :appointment_schedule
+    resolve Resolvers::CreateAppointmentSchedule.new
+  end
 end

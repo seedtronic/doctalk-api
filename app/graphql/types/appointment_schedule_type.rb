@@ -3,5 +3,5 @@ Types::AppointmentScheduleType = GraphQL::ObjectType.define do
   description 'An appointment schedule'
 
   field :id, !types.ID
-  field :startedAt, !types.DateTime, property: :start_at
+  field :startedAt, !Types::DateTimeType, property: :start_at
 end
