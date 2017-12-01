@@ -2,8 +2,8 @@ Types::DateTimeType = GraphQL::ScalarType.define do
   name 'DateTime'
   description 'DateTime in ISO8601 format'
 
-  coerce_input lamda(value, _ctx) do
+  coerce_input(lambda do |value, _ctx|
     value.is_a?(Time) ? value : Time.zone.parse(value)
-  end
+  end)
   coerce_result ->(value, _ctx) { value.iso8601 }
 end
