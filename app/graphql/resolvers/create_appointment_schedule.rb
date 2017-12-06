@@ -4,7 +4,7 @@ module Resolvers
       ctx[:current_user]
         .doctor
         .appointment_schedules
-        .create!(args[:appointment_schedule])
+        .create!(args[:appointment_schedule].to_h)
     end
   end
 end
