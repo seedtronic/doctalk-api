@@ -29,8 +29,6 @@ Types::QueryType = GraphQL::ObjectType.define do
   connection :appointment_schedules,
              Types::AppointmentScheduleType.connection_type do
     description 'List appointment schedules'
-    resolve lamda(_obj, _args, ctx) do
-      ctx[:current_user].doctor.appointment_schedules.order(:started_at)
-    end
+    resolve Resolvers::AppointmentSchedulesResolver.new
   end
 end
