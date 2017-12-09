@@ -10,11 +10,19 @@ module Resolvers
     private
 
     def filter_by_started_at(scope, args)
-      scope.where('started_at >', Time.current) unless args[:include_archive]
+      if args[:include_archive]
+        scope
+      else
+        scope.where('started_at >', Time.current)
+      end
     end
 
     def filter_by_scheduled(scope, args)
-      scope.where(appointment: nil) unless args[:include_scheduled]
+      if args[:include_scheduled]
+        scope
+      else
+        scope.where(appointment: nil)
+      end
     end
   end
 end

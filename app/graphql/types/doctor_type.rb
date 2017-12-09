@@ -12,8 +12,14 @@ Types::DoctorType = GraphQL::ObjectType.define do
 
   connection :appointmentSchedules,
              Types::AppointmentScheduleType.connection_type do
-               argument :include_archive, types.Boolean, default_value: false
-               argument :include_scheduled, types.Boolean, default_value: false
+               argument :includeArchive,
+                        types.Boolean,
+                        default_value: false,
+                        as: :include_archive
+               argument :includeScheduled,
+                        types.Boolean,
+                        default_value: false,
+                        as: :include_scheduled
                resolve Resolvers::AppointmentSchedulesResolver.new
              end
 end
