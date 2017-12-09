@@ -15,7 +15,7 @@ module Resolvers
       address = data.delete('address')
       (current_user.doctor || current_user.build_doctor).tap do |doctor|
         doctor.attributes = data.merge(
-          image_url: current_user.photo_url,
+          photo_url: current_user.photo_url,
           address_attributes: address
         )
       end

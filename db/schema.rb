@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201200550) do
+ActiveRecord::Schema.define(version: 20171209024902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20171201200550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "specialty_id"
-    t.string "image_url"
+    t.string "photo_url"
     t.string "crm", null: false
     t.index ["specialty_id"], name: "index_doctors_on_specialty_id"
   end
