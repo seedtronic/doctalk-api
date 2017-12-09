@@ -18,10 +18,10 @@ module Resolvers
     end
 
     def filter_by_scheduled(scope, args)
-      if args[:include_scheduled]
-        scope
-      else
+      if args[:exclude_scheduled]
         scope.where(appointment: nil)
+      else
+        scope
       end
     end
   end

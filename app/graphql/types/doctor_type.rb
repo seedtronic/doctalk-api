@@ -16,10 +16,10 @@ Types::DoctorType = GraphQL::ObjectType.define do
                         types.Boolean,
                         default_value: false,
                         as: :include_archive
-               argument :includeScheduled,
+               argument :excludeScheduled,
                         types.Boolean,
                         default_value: false,
-                        as: :include_scheduled
+                        as: :exclude_scheduled
                resolve Resolvers::AppointmentSchedulesResolver.new
              end
 end
