@@ -11,7 +11,7 @@ Types::DoctorType = GraphQL::ObjectType.define do
   field :user, Types::UserType
 
   connection :appointmentSchedules,
-             Types::AppointmentScheduleType.connection_type do
+             !Types::AppointmentScheduleType.connection_type do
                argument :includeArchive,
                         types.Boolean,
                         default_value: false,

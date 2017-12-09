@@ -13,7 +13,7 @@ module Resolvers
       if args[:include_archive]
         scope
       else
-        scope.where('started_at >', Time.current)
+        scope.where('started_at > ?', Time.current)
       end
     end
 
