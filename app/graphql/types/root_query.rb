@@ -25,10 +25,4 @@ Types::RootQuery = GraphQL::ObjectType.define do
     description 'List specialties'
     resolve ->(_obj, _args, _ctx) { Specialty.all.order(:title) }
   end
-
-  connection :appointmentSchedules,
-             Types::AppointmentScheduleType.connection_type do
-    description 'List appointment schedules'
-    resolve Resolvers::AppointmentSchedulesResolver.new
-  end
 end
