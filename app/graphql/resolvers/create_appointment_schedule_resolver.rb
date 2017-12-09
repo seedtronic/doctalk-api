@@ -1,5 +1,5 @@
 module Resolvers
-  class CreateAppointmentSchedule
+  class CreateAppointmentScheduleResolver
     def call(_obj, args, ctx)
       ctx[:current_user]
         .doctor
