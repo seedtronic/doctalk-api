@@ -1,4 +1,4 @@
-Types::QueryType = GraphQL::ObjectType.define do
+Types::RootQuery = GraphQL::ObjectType.define do
   name 'Query'
   description 'The root query'
 
