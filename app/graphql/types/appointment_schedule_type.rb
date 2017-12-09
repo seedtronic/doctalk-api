@@ -5,5 +5,7 @@ Types::AppointmentScheduleType = GraphQL::ObjectType.define do
   field :id, !types.ID
   field :startedAt, !Types::DateTimeType, property: :started_at
   field :doctor, !Types::DoctorType
-  field :appointment, Types::AppointmentType
+  field :appointment,
+        Types::AppointmentType,
+        resolve: Resolvers::AppointmentResolver.new
 end
