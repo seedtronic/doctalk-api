@@ -4,6 +4,7 @@ module Resolvers
       scope = Doctor.all.includes(:address)
       scope = filter_by_specialty(scope, args)
       scope = filter_by_region(scope, args)
+      scope = filter_by_coords(scope, args)
       scope
     end
 
@@ -28,10 +29,10 @@ module Resolvers
       end
     end
 
-    def filter_by_location
-      if args[:location]
+    def filter_by_coords(scope, args)
+      if args[:coords]
         scope.joins(:address).by_distance(
-          origin: [args[:location][:latitude], args[:location][:longitude]]
+          origin: [args[:coords][:latitude], args[:coords][:longitude]]
         )
       else
         scope

@@ -18,7 +18,7 @@ Types::RootQuery = GraphQL::ObjectType.define do
     description 'List doctors'
     argument :specialtyId, types.ID, as: :specialty_id
     argument :region, Inputs::RegionInput
-    argument :location, Inputs::LocationInput
+    argument :coords, Inputs::CoordsInput
     resolve Resolvers::DoctorsResolver.new
   end
 
