@@ -8,6 +8,7 @@ module Resolvers
         appointment.doctor.user
       ].include?(current_user)
       appointment.destroy!
+      appointment.appointment_schedule.appointment = nil
       appointment
     end
   end
