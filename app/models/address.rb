@@ -5,7 +5,7 @@ class Address < ApplicationRecord
   validates :street, :number, :city, :state, :zipcode, :lat, :lng,
             presence: true
 
-  acts_as_mappable
+  acts_as_mappable default_units: :kms
 
   def update_coordenates_from_adress
     location = GoogleGeocoder.geocode(full_address)

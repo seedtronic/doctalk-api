@@ -19,11 +19,19 @@ module Resolvers
 
     def filter_by_region(scope, args)
       if args[:region]
-        scope.joins(:address).merge(
-          Address.in_bounds(
-            region_to_bounds(args[:region]),
-            origin: [args[:region][:latitude], args[:region][:longitude]]
-          )
+        scope.joins(:address).in_bounds(
+          region_to_bounds(args[:region]),
+          origin: [args[:region][:latitude], args[:region][:longitude]]
+        )
+      else
+        scope
+      end
+    end
+
+    def filter_by_location
+      if args[:location]
+        scope.joins(:address).by_distance(
+          origin: [args[:location][:latitude], args[:location][:longitude]]
         )
       else
         scope

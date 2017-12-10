@@ -8,4 +8,6 @@ class Doctor < ApplicationRecord
   validates :name, :crm, :address, presence: true
 
   accepts_nested_attributes_for :address
+
+  acts_as_mappable through: :address
 end
