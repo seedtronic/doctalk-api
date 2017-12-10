@@ -32,4 +32,10 @@ Mutations::RootMutation = GraphQL::ObjectType.define do
 
     resolve Resolvers::CreateAppointmentResolver.new
   end
+
+  field :destroyAppointment, Types::AppointmentType do
+    argument :appointmentId, !types.ID, as: :appointment_id
+
+    resolve Resolvers::DestroyAppointmentResolver.new
+  end
 end

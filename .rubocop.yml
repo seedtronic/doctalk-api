@@ -1,6 +1,7 @@
 Metrics/BlockLength:
   Exclude:
     - 'app/graphql/types/**/*'
+    - 'app/graphql/mutations/**/*'
 
 Metrics/LineLength:
   Exclude:
