@@ -5,9 +5,9 @@ module Resolvers
       current_user = ctx[:current_user]
       appointment = appointment_schedule.appointment
       appointment if [
-        appointment.user,
+        appointment.try(:user),
         appointment_schedule.doctor.user
-      ].include?(current_user)
+      ].compact.include?(current_user)
     end
   end
 end
